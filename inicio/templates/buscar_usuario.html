@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_head %}
+Buscar Usuario
+{% endblock title_head %}
+{% block a_body %}
+SHOPIAND
+{% endblock a_body %}
+{% block h1_header %}
+Busqueda de Usuarios
+{% endblock h1_header %}
+{% block p_header %}
+Por favor ingrese el usuario a buscar
+{% endblock p_header %}
+
+{% block section_body %}
+{% endblock section_body %}
+
+{% block main %}
+
+<form action={% url "buscar_usuario" %}>
+    {{form}}
+    <input type="submit">
+</form>
+
+{% if clientes %}
+<ul>
+    {% for cliente in clientes %}
+    <li>{{cliente}}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No hay clientes registrados.</p>
+{% endif %}
+
+{% endblock main %}
