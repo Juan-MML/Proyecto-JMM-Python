@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_head %}
+Listado Paletas
+{% endblock title_head %}
+{% block a_body %}
+SHOPIAND
+{% endblock a_body %}
+{% block h1_header %}
+Listado Paletas
+{% endblock h1_header %}
+{% block p_header %}
+Por favor ingrese el usuario a buscar
+{% endblock p_header %}
+
+{% block section_body %}
+{% endblock section_body %}
+
+{% block main %}
+
+<a class="navbar-brand" href={% url "productos:crear_paleta" %}>Nueva Paleta</a>
+
+{% if productos %}
+<ul>
+    {% for productos in productos %}
+    <li>{{productos}} |<a href={% url "productos:ver_paleta" productos.id %}> Ver Más </a>|
+                    |<a href={% url "productos:editar_paleta" productos.id %}> Editar </a>|
+                    | <a href={% url "productos:eliminar_paleta" productos.id %}> Eliminar </a>|
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No hay paletas de productos registradas.</p>
+{% endif %}
+
+{% endblock main %}

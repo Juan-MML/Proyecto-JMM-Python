@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+Editar Paleta
+{% endblock title_head %}
+
+{% block h1_header %}
+Edita tu Paleta
+{% endblock h1_header %}
+
+{% block p_header %}
+Registra tu Producto
+{% endblock p_header %}
+
+{% block section_body %}
+{% endblock section_body %}
+
+{% block main %}
+
+<form action={% url "productos:editar_paleta" productos.id %} method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Editar">
+</form>
+{% endblock main %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title_head %}
+Ver Paleta
+{% endblock title_head %}
+{% block a_body %}
+SHOPIAND
+{% endblock a_body %}
+{% block h1_header %}
+Vista de Paletas
+{% endblock h1_header %}
+{% block p_header %}
+Por favor ingrese la paleta a buscar
+{% endblock p_header %}
+
+{% block section_body %}
+{% endblock section_body %}
+
+{% block main %}
+
+<ul>
+    <li>Marca: {{productos.marca}}</li>
+    <li>Modelo: {{productos.modelo}}</li>
+    <li>Fecha de Ingreso: {{productos.fecha_ingreso}}</li>
+</ul>
+
+{% endblock main %}

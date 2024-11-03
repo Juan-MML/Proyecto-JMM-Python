@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+Edit User
+{% endblock title_head %}
+
+{% block h1_header %}
+Área de Edición
+{% endblock h1_header %}
+
+{% block p_header %}
+Modifica tus datos a elección
+{% endblock p_header %}
+
+{% block section_body %}
+{% endblock section_body %}
+
+{% block main %}
+
+<form action={% url "editar_usuario" cliente.id %} method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Enviar">
+</form>
+{% endblock main %}

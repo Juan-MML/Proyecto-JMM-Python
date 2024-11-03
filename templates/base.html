@@ -29,6 +29,20 @@
                         <li class="nav-item"><a class="nav-link" href={% url "new_order" %}>New Order</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url "buscar_usuario" %}>Buscar Usuario</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url "about" %}>About</a></li>
+                        <li class="nav-item"><a class="nav-link" href={% url "productos:listado_paletas" %}>Paletas</a></li>
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href={% url "usuarios:editar_perfil" %}>
+                            <img src={{request.user.informacionextra.avatar.url}} alt="" height="40px">
+                            {{request.user.username}}
+                        </a></li>
+                        <form action={% url "usuarios:logout" %} method="post">
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-secondary" value="Cerrar Sesión">
+                        </form>
+                        {% else %}
+                        <li class="nav-item"><a class="btn btn-primary" href={% url "usuarios:login" %}>Iniciar Sesión</a></li>
+                        <li class="nav-item"><a class="btn btn-info" href={% url "usuarios:register" %}>Registrarse</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title_head %}
+Ver Usuario
+{% endblock title_head %}
+{% block a_body %}
+SHOPIAND
+{% endblock a_body %}
+{% block h1_header %}
+Vista de Usuarios
+{% endblock h1_header %}
+{% block p_header %}
+Por favor ingrese el usuario a buscar
+{% endblock p_header %}
+
+{% block section_body %}
+{% endblock section_body %}
+
+{% block main %}
+
+<ul>
+    <li>Cliente: {{cliente.cliente}}</li>
+    <li>Email: {{cliente.email}}</li>
+    <li>Dirección: {{cliente.direccion}}</li>
+    <li>Edad: {{cliente.edad}}</li>
+    <li>Intereses: {{cliente.intereses}}</li>
+</ul>
+
+{% endblock main %}
