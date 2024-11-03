@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block title_head %}
-Ver Paleta
+Ver Producto
 {% endblock title_head %}
 {% block a_body %}
 SHOPIAND
 {% endblock a_body %}
 {% block h1_header %}
-Vista de Paletas
+Vista de Productos
 {% endblock h1_header %}
 {% block p_header %}
-Por favor ingrese la paleta a buscar
+Por favor ingrese el producto a buscar
 {% endblock p_header %}
 
 {% block section_body %}
@@ -20,7 +20,13 @@ Por favor ingrese la paleta a buscar
 <ul>
     <li>Marca: {{productos.marca}}</li>
     <li>Modelo: {{productos.modelo}}</li>
-    <li>Fecha de Ingreso: {{productos.fecha_ingreso}}</li>
-</ul>
+    <li>Descripción: {{productos.descripcion}}</li>
+    <li>Stock en Argentina: {{productos.stock_arg}}</li>
+    
+    {% if productos.imagen %}
+    <p>Imagen actual:</p>
+    <img src="{{ productos.imagen.url }}" alt="{{ productos.modelo }}" width="200">
+    {% endif %}
 
+</ul>
 {% endblock main %}

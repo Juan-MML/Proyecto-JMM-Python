@@ -9,10 +9,12 @@ class CreacionUsuario(UserCreationForm):
     password2 = forms.CharField(label='Repetir Contrasenia', widget=forms.PasswordInput)
     first_name = forms.CharField(label='Nombre')
     last_name = forms.CharField(label='Apellido')
+    biography = forms.CharField(label='Biografia')
+    avatar = forms.ImageField(required=False)
     
     class Meta:
         model = User
-        fields = ['username','email','first_name', 'last_name', 'password1', 'password2',]
+        fields = ['username','email','first_name', 'last_name', 'password1', 'password2', 'biography', 'avatar']
         help_texts = {key:'' for key in fields}
 
 class EdicionPerfil(UserChangeForm):
@@ -22,8 +24,9 @@ class EdicionPerfil(UserChangeForm):
     last_name = forms.CharField(label='Apellido')
     password = None
     avatar = forms.ImageField(required=False)
+    biography = forms.CharField(label='Biografia')
     
     class Meta():
         
         model = User
-        fields = ['email','first_name', 'last_name', 'avatar']
+        fields = ['email','first_name', 'last_name', 'avatar','biography']

@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block title_head %}
-Edit User
+Crear Producto I.A. Favorito
 {% endblock title_head %}
 
 {% block h1_header %}
-Área de Edición
+Crea tu Producto I.A. de preferencia
 {% endblock h1_header %}
 
 {% block p_header %}
-Modifica tus datos a elección
+Registra tu Producto
 {% endblock p_header %}
 
 {% block section_body %}
@@ -17,9 +17,9 @@ Modifica tus datos a elección
 
 {% block main %}
 
-<form action={% url "editar_usuario" cliente.id %} method="POST">
+<form action={% url "productos:crear_producto" %} method="POST">
     {% csrf_token %}
     {{form}}
-    <input type="submit" value="Enviar">
+    <input type="submit" value="Crear">
 </form>
 {% endblock main %}

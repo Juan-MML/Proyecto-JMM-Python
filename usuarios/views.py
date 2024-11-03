@@ -31,8 +31,9 @@ def login(request):
 def register(request):
     
     formulario = CreacionUsuario()
+    
     if request.method == 'POST':
-        formulario = CreacionUsuario(request.POST)
+        formulario = CreacionUsuario(request.POST, request.FILES)
         if formulario.is_valid():
             
             formulario.save()
@@ -45,7 +46,7 @@ def register(request):
 def editar_perfil(request):
     
     informacion_extra = request.user.informacionextra
-    formulario = EdicionPerfil(instance=request.user, initial={'avatar':informacion_extra.avatar})
+    formulario = EdicionPerfil(instance=request.user, initial={'avatar':informacion_extra.avatar,'biography':informacion_extra.biography})
     
     if request.method == "POST":
         
@@ -54,7 +55,9 @@ def editar_perfil(request):
             
             nuevo_avatar = formulario.cleaned_data.get('avatar')
             informacion_extra.avatar = nuevo_avatar if nuevo_avatar else informacion_extra.avatar
-            
+            nueva_biografia = formulario.cleaned_data.get('biography')
+            informacion_extra.biography = nueva_biografia if nueva_biografia else informacion_extra.biography
+
             informacion_extra.save()
             formulario.save()
             
@@ -66,3 +69,18 @@ class CambiarPassword(LoginRequiredMixin,PasswordChangeView):
     
     template_name = 'usuarios/cambiar_password.html'
     success_url = reverse_lazy('usuarios:editar_perfil')
+
+@login_required
+def info_perfil(request):
+    perfil = InformacionExtra.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        form = InformacionExtra(request.POST, instance=perfil)
+        if form.is_valid():
+            form.save()
+            return redirect('perfil')
+    else:
+        form = InformacionExtra()
+
+    return render(request, 'usuarios/informacion_usuario.html', {'perfil': perfil, 'form': form})
+    

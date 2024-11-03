@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title_head %}
+Información Perfil
+{% endblock title_head %}
+{% block a_body %}
+SHOPIAND
+{% endblock a_body %}
+{% block h1_header %}
+Vista de Usuarios
+{% endblock h1_header %}
+{% block p_header %}
+Verifique su Perfil
+{% endblock p_header %}
+
+{% block section_body %}
+{% endblock section_body %}
+
+{% block main %}
+
+<h1>Perfil de {{ perfil.user.username }}</h1>
+
+{% if perfil.avatar %}
+<img src="{{ perfil.avatar.url }}" alt="Avatar de {{ perfil.user.username }}" style="height: 150px;">
+{% else %}
+<p>No hay avatar disponible.</p>
+{% endif %}
+
+<p><strong>Correo:</strong> {{ perfil.user.email }}</p>
+<p><strong>Nombre:</strong> {{ perfil.user.first_name }}</p>
+<p><strong>Apellido:</strong> {{ perfil.user.last_name }}</p>
+<p><strong>Biografia:</strong> {{ perfil.biography }}</p>
+
+<a href="{% url 'usuarios:editar_perfil' %}">Editar Perfil</a>
+
+{% endblock main %}

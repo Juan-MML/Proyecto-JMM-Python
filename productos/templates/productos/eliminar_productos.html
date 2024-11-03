@@ -1,25 +1,21 @@
 {% extends "base.html" %}
 
 {% block title_head %}
-Register
+Eliminar Producto
 {% endblock title_head %}
 
 {% block h1_header %}
-Área de Registro
+Elimina tu Producto
 {% endblock h1_header %}
-
-{% block p_header %}
-Registrate para más información
-{% endblock p_header %}
 
 {% block section_body %}
 {% endblock section_body %}
 
 {% block main %}
 
-<form action={% url "register" %} method="POST">
+<form action={% url "productos:eliminar_producto" productos.id %} method="POST">
     {% csrf_token %}
-    {{form}}
-    <input type="submit" value="Enviar">
+    <p>¿Desea eliminar el producto {{producto}}?</p>
+    <input type="submit" value="Confirmar">
 </form>
 {% endblock main %}
